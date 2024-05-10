@@ -1,16 +1,34 @@
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import MyNav from "./MyNav";
 import MyFooter from "./MyFooter";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getsongsAction } from "../redux/actions";
+import {
+  getsongsActioneminem,
+  getsongsActionkaty,
+  getsongsActionqueen,
+} from "../redux/actions";
+import MyCard from "./Card";
 
 const Homepage = () => {
-  const dispatch = useDispatch();
-  const songs = useSelector((state) => state.songs.content);
+  //   const dispatch = useDispatch();
+  const dispatchqueen = useDispatch();
+  const dispatcheminem = useDispatch();
+  const dispatchkatyperry = useDispatch();
+  const songseminem = useSelector(
+    (state) => state.songs.eminem
+  );
+  const songsqueen = useSelector(
+    (state) => state.songs.queen
+  );
+  const songskaty = useSelector(
+    (state) => state.songs.katyPerry
+  );
+
   useEffect(() => {
-    console.log(songs);
-    dispatch(getsongsAction());
+    dispatchqueen(getsongsActionqueen("queen"));
+    dispatchkatyperry(getsongsActionkaty("katy perry"));
+    dispatcheminem(getsongsActioneminem("eminem"));
   }, []);
   return (
     <>
@@ -51,8 +69,8 @@ const Homepage = () => {
                     className="imgLinks py-3"
                     id="rockSection"
                   >
-                    {songs.map((song) => (
-                      <Card key={song.id} song={song} />
+                    {songsqueen.map((song) => (
+                      <MyCard key={song.id} song={song} />
                     ))}
                   </Row>
                 </div>
@@ -69,7 +87,11 @@ const Homepage = () => {
                     xl={4}
                     className="imgLinks py-3"
                     id="popSection"
-                  ></Row>
+                  >
+                    {songskaty.map((song) => (
+                      <MyCard key={song.id} song={song} />
+                    ))}
+                  </Row>
                 </div>
               </Col>
             </Row>
@@ -84,7 +106,11 @@ const Homepage = () => {
                     xl={4}
                     className="imgLinks py-3"
                     id="hipHopSection"
-                  ></Row>
+                  >
+                    {songseminem.map((song) => (
+                      <MyCard key={song.id} song={song} />
+                    ))}
+                  </Row>
                 </div>
               </Col>
             </Row>

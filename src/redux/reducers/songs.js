@@ -1,7 +1,15 @@
-import { GET_SONGS } from "../actions";
+import {
+  GET_SONGS,
+  GET_SONGS_EMINEM,
+  GET_SONGS_KATY,
+  GET_SONGS_QUEEN,
+} from "../actions";
 
 const initialState = {
   content: [],
+  queen: [],
+  eminem: [],
+  katyPerry: [],
 };
 
 const songsReducer = (state = initialState, action) => {
@@ -10,6 +18,21 @@ const songsReducer = (state = initialState, action) => {
       return {
         ...state,
         content: action.payload,
+      };
+    case GET_SONGS_EMINEM:
+      return {
+        ...state,
+        eminem: action.payload,
+      };
+    case GET_SONGS_QUEEN:
+      return {
+        ...state,
+        queen: action.payload,
+      };
+    case GET_SONGS_KATY:
+      return {
+        ...state,
+        katyPerry: action.payload,
       };
 
     default:

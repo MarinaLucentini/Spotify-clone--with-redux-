@@ -1,18 +1,21 @@
 import { Col } from "react-bootstrap";
 
-const Card = ({ song }) => {
+const MyCard = ({ song }) => {
+  console.log(song);
   return (
     <>
-      <Col className="text-center">
-        <img
-          src={song.artist.picture_medium}
-          alt=""
-          className="img-fluid"
-        />
-        <p>singleSong.title</p>
-        <p>singleSong.artist.name</p>
-      </Col>
+      {song && (
+        <Col className="text-center">
+          <img
+            src={song.artist.picture_medium}
+            alt=""
+            className="img-fluid"
+          />
+          <p>{song.title}</p>
+          <p>{song.artist.name}</p>
+        </Col>
+      )}
     </>
   );
 };
-export default Card;
+export default MyCard;
