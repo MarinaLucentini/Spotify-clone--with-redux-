@@ -1,7 +1,6 @@
 import { Col } from "react-bootstrap";
 
 const MyCard = ({ song }) => {
-  console.log(song);
   return (
     <>
       {song && (

@@ -9,8 +9,21 @@ import {
   Row,
 } from "react-bootstrap";
 import logo from "../assets/logo/logo.png";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { queryAction } from "../redux/actions";
 
 const MyNav = () => {
+  const [query, setQuery] = useState();
+  const dispatch = useDispatch();
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    dispatch(queryAction(query));
+  };
   return (
     <>
       <Navbar
@@ -44,11 +57,13 @@ const MyNav = () => {
                   placeholder="Search"
                   aria-label="Search"
                   aria-describedby="basic-addon2"
+                  onChange={handleChange}
                 />
                 <Button
                   variant="outline-secondary"
                   id="button-addon2"
                   className="h-100"
+                  onClick={handleSubmit}
                 >
                   Go
                 </Button>

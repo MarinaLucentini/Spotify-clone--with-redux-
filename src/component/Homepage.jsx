@@ -4,6 +4,7 @@ import MyFooter from "./MyFooter";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getsongsAction,
   getsongsActioneminem,
   getsongsActionkaty,
   getsongsActionqueen,
@@ -11,7 +12,7 @@ import {
 import MyCard from "./Card";
 
 const Homepage = () => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const dispatchqueen = useDispatch();
   const dispatcheminem = useDispatch();
   const dispatchkatyperry = useDispatch();
@@ -24,12 +25,17 @@ const Homepage = () => {
   const songskaty = useSelector(
     (state) => state.songs.katyPerry
   );
-
+  const query = useSelector((state) => state.query.content);
+  const searchedSong = useSelector(
+    (state) => state.songs.content
+  );
+  console.log(searchedSong);
   useEffect(() => {
     dispatchqueen(getsongsActionqueen("queen"));
     dispatchkatyperry(getsongsActionkaty("katy perry"));
     dispatcheminem(getsongsActioneminem("eminem"));
-  }, []);
+    dispatch(getsongsAction(query));
+  }, [query]);
   return (
     <>
       <Container fluid>
@@ -55,6 +61,25 @@ const Homepage = () => {
                 </a>
                 <a href="#NEW RELEASES">NEW RELEASES</a>
                 <a href="#DISCOVER">DISCOVER</a>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={10}>
+                <div id="rock">
+                  <h2>Canzoni cercate...</h2>
+                  <Row
+                    xs={1}
+                    sm={2}
+                    lg={3}
+                    xl={4}
+                    className="imgLinks py-3"
+                    id="rockSection"
+                  >
+                    {searchedSong.map((song) => (
+                      <MyCard key={song.id} song={song} />
+                    ))}
+                  </Row>
+                </div>
               </Col>
             </Row>
             <Row>

@@ -5,6 +5,7 @@ export const GET_SONGS = "GET_SONGS";
 export const GET_SONGS_QUEEN = "GET_SONGS_QUEEN";
 export const GET_SONGS_EMINEM = "GET_SONGS_EMINEM";
 export const GET_SONGS_KATY = "GET_SONGS_KATY";
+export const QUERY_USER = "QUERY_USER";
 
 export const addTofavourites = (data) => ({
   type: ADD_TO_FAVOURITES,
@@ -13,6 +14,10 @@ export const addTofavourites = (data) => ({
 export const removeFromfavourites = (data) => ({
   type: REMOVE_FROM_FAVOURITES,
   payload: data,
+});
+export const queryAction = (inputValue) => ({
+  type: QUERY_USER,
+  payload: inputValue,
 });
 
 export const getsongsAction = (artistname) => {
