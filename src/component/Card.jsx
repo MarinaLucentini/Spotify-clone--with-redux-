@@ -1,10 +1,14 @@
 import { Col } from "react-bootstrap";
 
-const Card = () => {
+const Card = ({ song }) => {
   return (
     <>
       <Col className="text-center">
-        <img src="" alt="" className="img-fluid" />
+        <img
+          src={song.artist.picture_medium}
+          alt=""
+          className="img-fluid"
+        />
         <p>singleSong.title</p>
         <p>singleSong.artist.name</p>
       </Col>

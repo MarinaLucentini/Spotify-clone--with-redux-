@@ -1,8 +1,17 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import MyNav from "./MyNav";
 import MyFooter from "./MyFooter";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getsongsAction } from "../redux/actions";
 
 const Homepage = () => {
+  const dispatch = useDispatch();
+  const songs = useSelector((state) => state.songs.content);
+  useEffect(() => {
+    console.log(songs);
+    dispatch(getsongsAction());
+  }, []);
   return (
     <>
       <Container fluid>
@@ -41,7 +50,11 @@ const Homepage = () => {
                     xl={4}
                     className="imgLinks py-3"
                     id="rockSection"
-                  ></Row>
+                  >
+                    {songs.map((song) => (
+                      <Card key={song.id} song={song} />
+                    ))}
+                  </Row>
                 </div>
               </Col>
             </Row>
