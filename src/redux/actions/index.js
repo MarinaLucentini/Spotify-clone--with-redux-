@@ -6,6 +6,7 @@ export const GET_SONGS_QUEEN = "GET_SONGS_QUEEN";
 export const GET_SONGS_EMINEM = "GET_SONGS_EMINEM";
 export const GET_SONGS_KATY = "GET_SONGS_KATY";
 export const QUERY_USER = "QUERY_USER";
+export const SELECT_SONG = "SELECT_SONG";
 
 export const addTofavourites = (data) => ({
   type: ADD_TO_FAVOURITES,

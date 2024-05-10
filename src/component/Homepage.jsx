@@ -43,11 +43,7 @@ const Homepage = () => {
           <Col xs={2}>
             <MyNav />
           </Col>
-          <Col
-            xs={12}
-            md={9}
-            className="offset-md-3 mainPage"
-          >
+          <Col xs={12} md={9} className="offset-md-3 ">
             <Row>
               <Col
                 xs={9}
