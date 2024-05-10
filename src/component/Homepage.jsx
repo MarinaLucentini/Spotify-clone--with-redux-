@@ -63,7 +63,7 @@ const Homepage = () => {
             <Row>
               <Col xs={10}>
                 <div id="hiphop">
-                  <h2>Hip Hop</h2>
+                  <h2>#Hip Hop</h2>
                   <Row
                     xs={1}
                     sm={2}

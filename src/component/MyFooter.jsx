@@ -22,21 +22,15 @@ const MyFooter = () => {
             <Row className="h-100 flex-column justify-content-center align-items-center">
               <Col xs={6} md={4} className="playerControls">
                 <Stack direction="horizontal" gap={5}>
-                  <div>
-                    <img src={shuffle} alt="shuffle" />
-                  </div>
-                  <div>
-                    <img src={prev} alt="prev" />
-                  </div>
-                  <div>
-                    <img src={play} alt="play" />
-                  </div>
-                  <div>
-                    <img src={next} alt="next" />
-                  </div>
-                  <div>
-                    <img src={repeat} alt="repeat" />
-                  </div>
+                  <img src={shuffle} alt="shuffle" />
+
+                  <img src={prev} alt="prev" />
+
+                  <img src={play} alt="play" />
+
+                  <img src={next} alt="next" />
+
+                  <img src={repeat} alt="repeat" />
                 </Stack>
                 <div className="progress mt-3">
                   <div role="progressbar"></div>
