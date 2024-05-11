@@ -24,7 +24,7 @@ const Homepage = () => {
   const searchedSong = useSelector(
     (state) => state.songs.content
   );
-  console.log(searchedSong);
+
   useEffect(() => {
     dispatchqueen(getsongsAction("queen"));
     dispatchkatyperry(getsongsAction("katy perry"));
@@ -58,25 +58,27 @@ const Homepage = () => {
                 <a href="#DISCOVER">DISCOVER</a>
               </Col>
             </Row>
-            <Row>
-              <Col xs={10}>
-                <div id="rock">
-                  <h2>Canzoni cercate...</h2>
-                  <Row
-                    xs={1}
-                    sm={2}
-                    lg={3}
-                    xl={4}
-                    className="imgLinks py-3"
-                    id="rockSection"
-                  >
-                    {searchedSong.map((song) => (
-                      <MyCard key={song.id} song={song} />
-                    ))}
-                  </Row>
-                </div>
-              </Col>
-            </Row>
+            {searchedSong.length > 0 && (
+              <Row>
+                <Col xs={10}>
+                  <div id="rock">
+                    <h2>{query}</h2>
+                    <Row
+                      xs={1}
+                      sm={2}
+                      lg={3}
+                      xl={4}
+                      className="imgLinks py-3"
+                      id="rockSection"
+                    >
+                      {searchedSong.map((song) => (
+                        <MyCard key={song.id} song={song} />
+                      ))}
+                    </Row>
+                  </div>
+                </Col>
+              </Row>
+            )}
             <Row>
               <Col xs={10}>
                 <div id="rock">

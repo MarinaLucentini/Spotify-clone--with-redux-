@@ -1,8 +1,11 @@
 import {
+  ERROR_MESSAGE,
   GET_SONGS,
   GET_SONGS_EMINEM,
   GET_SONGS_KATY,
   GET_SONGS_QUEEN,
+  HAS_ERROR,
+  IS_LOADING,
 } from "../actions";
 
 const initialState = {
@@ -10,6 +13,9 @@ const initialState = {
   queen: [],
   eminem: [],
   katyPerry: [],
+  isLoading: false,
+  hasError: false,
+  ErrorMessage: "",
 };
 
 const songsReducer = (state = initialState, action) => {
@@ -33,6 +39,21 @@ const songsReducer = (state = initialState, action) => {
       return {
         ...state,
         katyPerry: action.payload,
+      };
+    case IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    case HAS_ERROR:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    case ERROR_MESSAGE:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
 
     default:

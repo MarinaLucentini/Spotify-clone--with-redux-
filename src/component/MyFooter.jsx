@@ -26,8 +26,6 @@ const MyFooter = () => {
     (song) => song.id === selectedSong.id
   );
 
-  console.log(filterSong);
-
   const dispatch = useDispatch();
   const handleAFavourites = (song) => {
     if (filterSong.length > 0) {

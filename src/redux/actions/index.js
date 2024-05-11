@@ -7,7 +7,11 @@ export const GET_SONGS_EMINEM = "GET_SONGS_EMINEM";
 export const GET_SONGS_KATY = "GET_SONGS_KATY";
 export const QUERY_USER = "QUERY_USER";
 export const SELECT_SONG = "SELECT_SONG";
-
+export const IS_LOADING = "IS_LOADING";
+export const HAS_ERROR = "HAS_ERROR";
+export const ERROR_MESSAGE = "ERROR_MESSAGE";
+export const PLAY_SONG = "PLAY_SONG";
+export const PAUSE_SONG = "PAUSE_SONG";
 export const addTofavourites = (data) => ({
   type: ADD_TO_FAVOURITES,
   payload: data,
@@ -23,20 +27,29 @@ export const queryAction = (inputValue) => ({
 
 export const getsongsAction = (artistname) => {
   return async (dispatch) => {
+    dispatch({
+      type: IS_LOADING,
+      payload: true,
+    });
     try {
       let resp = await fetch(
         "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
           artistname
       );
       if (resp.ok) {
+        dispatch({
+          type: IS_LOADING,
+          payload: false,
+        });
         let fetchedSongs = await resp.json();
         const fetchedData = fetchedSongs.data;
         const filteredSong = [];
 
         const numSongs = fetchedData.length;
+        let randomIndex = 0;
 
         for (let i = 0; i < 4; i++) {
-          const randomIndex = Math.floor(
+          randomIndex = Math.floor(
             Math.random() * numSongs
           );
           filteredSong.push(fetchedData[randomIndex]);
@@ -64,10 +77,34 @@ export const getsongsAction = (artistname) => {
           });
         }
       } else {
+        dispatch({
+          type: IS_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: HAS_ERROR,
+          payload: true,
+        });
         console.log("error");
       }
     } catch (error) {
       console.log(error);
+      dispatch({
+        type: ERROR_MESSAGE,
+        payload: error.message,
+      });
     }
+  };
+};
+export const playSong = (songUrl) => {
+  return (dispatch) => {
+    const audio = new Audio(songUrl);
+    audio.play();
+    dispatch({ type: PLAY_SONG, payload: songUrl });
+  };
+};
+export const pauseSong = () => {
+  return (dispatch) => {
+    dispatch({ type: PAUSE_SONG });
   };
 };
