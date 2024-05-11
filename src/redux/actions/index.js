@@ -30,7 +30,18 @@ export const getsongsAction = (artistname) => {
       );
       if (resp.ok) {
         let fetchedSongs = await resp.json();
-        const filteredSong = fetchedSongs.data.slice(0, 4);
+        const fetchedData = fetchedSongs.data;
+        const filteredSong = [];
+
+        const numSongs = fetchedData.length;
+
+        for (let i = 0; i < 4; i++) {
+          const randomIndex = Math.floor(
+            Math.random() * numSongs
+          );
+          filteredSong.push(fetchedData[randomIndex]);
+        }
+        // così ho reso randomiche le 4 canzoni
         if (artistname === "eminem") {
           dispatch({
             type: GET_SONGS_EMINEM,
