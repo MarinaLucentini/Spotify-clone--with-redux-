@@ -9,12 +9,26 @@ import prev from "../assets/playerbuttons/prev.png";
 import play from "../assets/playerbuttons/play.png";
 import next from "../assets/playerbuttons/next.png";
 import repeat from "../assets/playerbuttons/repeat.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addTofavourites,
+  removeFromfavourites,
+} from "../redux/actions";
 
 const MyFooter = () => {
   const selectedSong = useSelector(
     (state) => state.selectedsong.content
   );
+  const favouritesSong = useSelector((state) => {
+    state.favorites.content;
+  });
+  const dispatch = useDispatch();
+  const handleAddFavourites = (song) => {
+    dispatch(addTofavourites(song));
+  };
+  const handleRemoveFavourites = (song) => {
+    dispatch(removeFromfavourites(song));
+  };
   return (
     <>
       <Container
@@ -82,7 +96,14 @@ const MyFooter = () => {
                 md={4}
                 className="d-flex align-items-center justify-content-center"
               >
-                <i className="bi bi-heart text-secondary"></i>
+                {selectedSong && (
+                  <i
+                    className="bi bi-heart text-secondary"
+                    onClick={() =>
+                      handleAddFavourites(selectedSong)
+                    }
+                  ></i>
+                )}
               </Col>
             </Row>
           </Col>
