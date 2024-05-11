@@ -40,7 +40,7 @@ const MyNav = () => {
           className="align-items-start
         "
         >
-          <Nav className="flex-column justify-content-between h-100 mx-3">
+          <Nav className="flex-column justify-content-between h-100 px-3">
             <div>
               <Nav.Link href="#home">
                 <i className="bi bi-house-door-fill"></i>

@@ -31,10 +31,27 @@ export const getsongsAction = (artistname) => {
       if (resp.ok) {
         let fetchedSongs = await resp.json();
         const filteredSong = fetchedSongs.data.slice(0, 4);
-        dispatch({
-          type: GET_SONGS,
-          payload: filteredSong,
-        });
+        if (artistname === "eminem") {
+          dispatch({
+            type: GET_SONGS_EMINEM,
+            payload: filteredSong,
+          });
+        } else if (artistname === "queen") {
+          dispatch({
+            type: GET_SONGS_QUEEN,
+            payload: filteredSong,
+          });
+        } else if (artistname === "katy perry") {
+          dispatch({
+            type: GET_SONGS_KATY,
+            payload: filteredSong,
+          });
+        } else {
+          dispatch({
+            type: GET_SONGS,
+            payload: filteredSong,
+          });
+        }
       } else {
         console.log("error");
       }
@@ -43,69 +60,69 @@ export const getsongsAction = (artistname) => {
     }
   };
 };
-export const getsongsActionqueen = (artistname) => {
-  return async (dispatch) => {
-    try {
-      let resp = await fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-          artistname
-      );
-      if (resp.ok) {
-        let fetchedSongs = await resp.json();
-        const filteredSong = fetchedSongs.data.slice(0, 4);
-        dispatch({
-          type: GET_SONGS_QUEEN,
-          payload: filteredSong,
-        });
-      } else {
-        console.log("error");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-export const getsongsActionkaty = (artistname) => {
-  return async (dispatch) => {
-    try {
-      let resp = await fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-          artistname
-      );
-      if (resp.ok) {
-        let fetchedSongs = await resp.json();
-        const filteredSong = fetchedSongs.data.slice(0, 4);
-        dispatch({
-          type: GET_SONGS_KATY,
-          payload: filteredSong,
-        });
-      } else {
-        console.log("error");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-export const getsongsActioneminem = (artistname) => {
-  return async (dispatch) => {
-    try {
-      let resp = await fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-          artistname
-      );
-      if (resp.ok) {
-        let fetchedSongs = await resp.json();
-        const filteredSong = fetchedSongs.data.slice(0, 4);
-        dispatch({
-          type: GET_SONGS_EMINEM,
-          payload: filteredSong,
-        });
-      } else {
-        console.log("error");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+// export const getsongsActionqueen = (artistname) => {
+//   return async (dispatch) => {
+//     try {
+//       let resp = await fetch(
+//         "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
+//           artistname
+//       );
+//       if (resp.ok) {
+//         let fetchedSongs = await resp.json();
+//         const filteredSong = fetchedSongs.data.slice(0, 4);
+//         dispatch({
+//           type: GET_SONGS_QUEEN,
+//           payload: filteredSong,
+//         });
+//       } else {
+//         console.log("error");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
+// export const getsongsActionkaty = (artistname) => {
+//   return async (dispatch) => {
+//     try {
+//       let resp = await fetch(
+//         "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
+//           artistname
+//       );
+//       if (resp.ok) {
+//         let fetchedSongs = await resp.json();
+//         const filteredSong = fetchedSongs.data.slice(0, 4);
+//         dispatch({
+//           type: GET_SONGS_KATY,
+//           payload: filteredSong,
+//         });
+//       } else {
+//         console.log("error");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
+// export const getsongsActioneminem = (artistname) => {
+//   return async (dispatch) => {
+//     try {
+//       let resp = await fetch(
+//         "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
+//           artistname
+//       );
+//       if (resp.ok) {
+//         let fetchedSongs = await resp.json();
+//         const filteredSong = fetchedSongs.data.slice(0, 4);
+//         dispatch({
+//           type: GET_SONGS_EMINEM,
+//           payload: filteredSong,
+//         });
+//       } else {
+//         console.log("error");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };

@@ -3,12 +3,7 @@ import MyNav from "./MyNav";
 import MyFooter from "./MyFooter";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getsongsAction,
-  getsongsActioneminem,
-  getsongsActionkaty,
-  getsongsActionqueen,
-} from "../redux/actions";
+import { getsongsAction } from "../redux/actions";
 import MyCard from "./Card";
 
 const Homepage = () => {
@@ -31,9 +26,9 @@ const Homepage = () => {
   );
   console.log(searchedSong);
   useEffect(() => {
-    dispatchqueen(getsongsActionqueen("queen"));
-    dispatchkatyperry(getsongsActionkaty("katy perry"));
-    dispatcheminem(getsongsActioneminem("eminem"));
+    dispatchqueen(getsongsAction("queen"));
+    dispatchkatyperry(getsongsAction("katy perry"));
+    dispatcheminem(getsongsAction("eminem"));
     dispatch(getsongsAction(query));
   }, [query]);
   return (
