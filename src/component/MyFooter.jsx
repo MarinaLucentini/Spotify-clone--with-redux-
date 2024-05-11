@@ -89,7 +89,9 @@ const MyFooter = () => {
                 <Stack direction="horizontal">
                   <img src={shuffle} alt="shuffle" />
                   <img src={prev} alt="prev" />
+
                   <img src={play} alt="play" />
+
                   <img src={next} alt="next" />
                   <img src={repeat} alt="repeat" />
                 </Stack>

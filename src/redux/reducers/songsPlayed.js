@@ -1,8 +1,7 @@
-import { PAUSE_SONG, PLAY_SONG } from "../actions";
+import { PLAY_SONG } from "../actions";
 
 const initialState = {
   content: "",
-  isPlaying: false,
 };
 const songsPlayedReduce = (
   state = initialState,
@@ -13,12 +12,6 @@ const songsPlayedReduce = (
       return {
         ...state,
         content: action.payload,
-        isPlaying: true,
-      };
-    case PAUSE_SONG:
-      return {
-        ...state,
-        isPlaying: false,
       };
 
     default:

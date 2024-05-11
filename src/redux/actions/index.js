@@ -103,8 +103,3 @@ export const playSong = (songUrl) => {
     dispatch({ type: PLAY_SONG, payload: songUrl });
   };
 };
-export const pauseSong = () => {
-  return (dispatch) => {
-    dispatch({ type: PAUSE_SONG });
-  };
-};
