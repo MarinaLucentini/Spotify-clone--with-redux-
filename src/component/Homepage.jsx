@@ -29,7 +29,11 @@ const Homepage = () => {
     dispatchqueen(getsongsAction("queen"));
     dispatchkatyperry(getsongsAction("katy perry"));
     dispatcheminem(getsongsAction("eminem"));
-    dispatch(getsongsAction(query));
+  }, []);
+  useEffect(() => {
+    if (query) {
+      dispatch(getsongsAction(query));
+    }
   }, [query]);
   return (
     <>

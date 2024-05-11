@@ -19,16 +19,24 @@ const MyFooter = () => {
   const selectedSong = useSelector(
     (state) => state.selectedsong.content
   );
-  const favouritesSong = useSelector((state) => {
-    state.favorites.content;
-  });
+  const favouritesSong = useSelector(
+    (state) => state.favorites.content
+  );
+  const filterSong = favouritesSong.filter(
+    (song) => song.id === selectedSong.id
+  );
+
+  console.log(filterSong);
+
   const dispatch = useDispatch();
-  const handleAddFavourites = (song) => {
-    dispatch(addTofavourites(song));
+  const handleAFavourites = (song) => {
+    if (filterSong.length > 0) {
+      dispatch(removeFromfavourites(song));
+    } else {
+      dispatch(addTofavourites(song));
+    }
   };
-  const handleRemoveFavourites = (song) => {
-    dispatch(removeFromfavourites(song));
-  };
+
   return (
     <>
       <Container
@@ -98,9 +106,13 @@ const MyFooter = () => {
               >
                 {selectedSong && (
                   <i
-                    className="bi bi-heart text-secondary"
+                    className={`${
+                      filterSong.length > 0
+                        ? "bi bi-heart-fill text-secondary"
+                        : "bi bi-heart text-secondary"
+                    }`}
                     onClick={() =>
-                      handleAddFavourites(selectedSong)
+                      handleAFavourites(selectedSong)
                     }
                   ></i>
                 )}
