@@ -100,6 +100,7 @@ export const playSong = (songUrl) => {
   return (dispatch) => {
     const audio = new Audio(songUrl);
     audio.play();
+    audio.volume = 0.25;
     dispatch({ type: PLAY_SONG, payload: songUrl });
   };
 };

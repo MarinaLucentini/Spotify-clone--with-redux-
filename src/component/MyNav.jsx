@@ -13,6 +13,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { queryAction } from "../redux/actions";
+import { NavLink } from "react-router-dom";
 
 const MyNav = () => {
   const [query, setQuery] = useState();
@@ -42,15 +43,18 @@ const MyNav = () => {
         >
           <Nav className="flex-column justify-content-between h-100 px-3">
             <div>
-              <Nav.Link href="#home">
+              <NavLink to={"/"} className="nav-link">
                 <i className="bi bi-house-door-fill"></i>
                 &nbsp; Home
-              </Nav.Link>
-              <Nav.Link href="#link">
+              </NavLink>
+              <NavLink
+                to={"/myLibrary"}
+                className="nav-link"
+              >
                 {" "}
                 <i className="bi bi-book-fill"></i>
                 &nbsp; Your Library
-              </Nav.Link>
+              </NavLink>
 
               <InputGroup className="mb-3">
                 <Form.Control
